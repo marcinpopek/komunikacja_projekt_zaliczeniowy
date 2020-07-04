@@ -1,6 +1,6 @@
-#ifdef __KONSOLA
-#define __KONSOLA
+#ifdef __PROGRAM_1
+#define __PROGRAM_1
 
 
 
-#endif //__KONSOLA
+#endif //__PROGRAM_1
