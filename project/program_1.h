@@ -1,4 +1,4 @@
-#ifdef __PROGRAM_1
+#ifndef __PROGRAM_1
 #define __PROGRAM_1
 
 #include <stdio.h>
