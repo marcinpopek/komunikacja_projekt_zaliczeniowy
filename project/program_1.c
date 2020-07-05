@@ -1,8 +1,8 @@
-#include "PROGRAM_1.h"
+#include "program_1.h"
 
 int main() {
 
 
 
-	return 0;
+return 0;
 }
