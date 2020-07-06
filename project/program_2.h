@@ -8,4 +8,8 @@
 #include <sys/stat.h>
 #include <string.h>
 
+long int parse(int argc, char* argv[]);
+void send(unsigned int number);
+unsigned int transform(unsigned int number);
+
 #endif //__PROGRAM_2
