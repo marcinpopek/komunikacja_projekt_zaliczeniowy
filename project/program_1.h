@@ -7,6 +7,7 @@
 #include <signal.h>
 
 void send(unsigned int number);
-long int transform(long int number);
+long int modify(long int number);
+void handler();
 
 #endif //__PROGRAM_1
