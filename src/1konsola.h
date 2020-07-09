@@ -9,6 +9,6 @@
 
 void send(const unsigned int);
 unsigned int transform(unsigned int);
-void breakHndler();
+void breakHandler();
 
 #endif //__1KONSOLA_H_

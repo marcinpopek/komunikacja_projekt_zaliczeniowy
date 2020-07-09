@@ -15,6 +15,6 @@ void breakHandler() {
     exit(0);
 }
 
-unsigned int transform(unsigned int) {
+unsigned int transform(unsigned int number) {
 	return number % 10;
 }

@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <stdbool.h>
-#include <fcnt1.h>
+#include <fcntl.h>
 
 bool isPrime(const unsigned long);
 void send(const unsigned int);

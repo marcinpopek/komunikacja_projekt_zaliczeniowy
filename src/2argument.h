@@ -8,7 +8,7 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <limits.h>
-#include <fcnt1.h>
+#include <fcntl.h>
 
 long int parseCmdOption(int, char* []);
 void send(const unsigned int);
