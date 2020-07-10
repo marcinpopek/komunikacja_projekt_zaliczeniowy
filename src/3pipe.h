@@ -8,9 +8,8 @@
 #include <stdbool.h>
 #include <fcntl.h>
 
-bool isPrime(const unsigned long);
 void send(const unsigned int);
 unsigned int transform(unsigned int);
-unsigned int recive();
+
 
 #endif //__3PIPE_H_
