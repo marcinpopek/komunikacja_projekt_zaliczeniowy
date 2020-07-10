@@ -10,7 +10,8 @@
 #include <limits.h>
 #include <fcntl.h>
 
-long int parseCmdOption(int, char* []);
+unsigned int receive();
+bool isPrime(const unsigned long number);
 void send(const unsigned int);
 unsigned int transform(unsigned int);
 
