@@ -5,9 +5,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <getopt.h>
+#include <sys/stat.h>
+#include <string.h>
+#include <limits.h>
 
-long int receive();
-void gt_send(const unsigned int);
+unsigned int parseCmdOption(int argc, char *argv[]);
+void send(const unsigned int number);
 long int transform(const long int);
 
 #endif //_4JAJKO_H_
