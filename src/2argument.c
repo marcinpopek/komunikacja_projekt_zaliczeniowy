@@ -1,52 +1,63 @@
 #include "2argument.h"
 #include "gluchytelefon.h"
 
+
+
+
+
 int main() {
 
-	displayInfo(INTRO, "#####     2     #####   bit reverse");
+	displayInfo(INTRO, "#####     2     #####   next prime number");
     char buffer[BUFFER_SIZE];
 
-    unsigned int number = parseCmdOption(argc, argv);
-    if (!checkRange(number))
+    unsigned int number=receive();
+    sprintf(buffer, "%ld", number);
+    displayInfo(INPUT, buffer);
+    if(!checkRange(number))
     {
         displayInfo(ERROR, TXT_ERROR_INPUT_OUT_OF_RANGE);
         return 0;
     }
-    sprintf(buffer, "%ld", number);
-    displayInfo(INPUT, buffer);
-    displayBits(number);
 
-    unsigned int reverse = transform((unsigned int)number);
-    displayBits(reverse);
-    sprintf(buffer, "%u", reverse);
+    number=transform(number);
+    if(!checkRange(number))
+    {
+        displayInfo(ERROR, TXT_ERROR_OUTPUT_OUT_OF_RANGE);
+        return 0;
+    }
+    sprintf(buffer, "%ld", number);
     displayInfo(OUTPUT, buffer);
 
-    send(reverse);
+    send(number);
 
 	return 0;
 }
 
-unsigned int parseCmdOption(int argc, char *argv[]) {
-
-	int param;
-    long int number = 0;
-    while ((param = getopt(argc, argv, "hi:")) != -1)
+unsigned int receive()
+{
+	int fd;
+    char buffer[sizeof(int)*8];
+	fd=open(FIFO_PATH,O_RDONLY);
+    if( read(fd,buffer,sizeof(int)*8) < 0 )
     {
-        switch (param)
-        {
-        case 'i': // input
-            number = atol(optarg);
-            return number;
-            break;
-
-        case 'h': // help
-        default:
-            printf("Usage:\n\t%s -i [0-%u]\n", argv[0], UINT_MAX);
-            exit(0);
-            break;
-        }
+        perror("Couldn't read from FIFO");
+        exit(0);
     }
-    return -1;
+	close(fd);
+    unlink(FIFO_PATH);
+
+    return atol(buffer);
+}
+
+bool isPrime(const unsigned long number)
+{
+    if(number<=1) return false;
+    if(number==2) return true;
+    for(unsigned int i=2; (i*i)<=number; ++i)
+    {
+        if(number%i==0) return false;
+    }
+    return true;
 }
 
 unsigned int transform(unsigned int number) {
